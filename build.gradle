@@ -13,6 +13,19 @@ repositories {
 dependencies {
   compile 'com.google.guava:guava:18.0'
 }
+uploadArchives {
+    repositories {
+       mavenDeployer {
+             repository(url: "http://142.93.220.227:8081/repository/gradle/") {
+             authentication(userName: "lijo", password: "abc@123")
+}
+             pom.version = "1.0-SNAPSHOT"
+             pom.artifactId = "simple-project"
+             pom.groupId = "com.example"
+       }
+    }
+}
+
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
